@@ -1,0 +1,8 @@
+README.md
+setup.py
+fingerprint/__init__.py
+fingerprint/fingerprint.py
+fingerprint_oneplace_jbinggi.egg-info/PKG-INFO
+fingerprint_oneplace_jbinggi.egg-info/SOURCES.txt
+fingerprint_oneplace_jbinggi.egg-info/dependency_links.txt
+fingerprint_oneplace_jbinggi.egg-info/top_level.txt

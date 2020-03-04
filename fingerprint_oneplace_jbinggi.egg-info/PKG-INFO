@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: fingerprint-oneplace-jbinggi
+Version: 0.0.1
+Summary: Raspberry Pi Fingerprint Library to connect with Oneplace
+Home-page: https://github.com/jbinggi/Oneplace_Fingerprint
+Author: JBinggi
+Author-email: juerg.binggeli@gmail.com
+License: UNKNOWN
+Description: # Raspberry PI oneplace-fingerprint
+        Pi Fingerprint Library to connect a Fingerprint Device to Oneplace Dashboard
+        
+        ## Requirements
+        
+        Requires [oneplace-core](https://github.com/OnePlc/PLC_X_Core), [oneplace-user-finger](https://github.com/JBinggi/Oneplace_Fingerprint), [oneplace-worktime-stamp](https://github.com/JBinggi/Oneplace_Worktime_stamp)
+        
+        ## installation
+        
+        The easiest way to install this plugin is by using composer
+        ```bash
+        $ pip install fingerprint-oneplace-jbinggi
+        ```
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
