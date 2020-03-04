@@ -3,3 +3,7 @@
 venv/
 vendor/
 docs/html/
+/*.egg-info
+/dist/
+/build/
+*.pyc
