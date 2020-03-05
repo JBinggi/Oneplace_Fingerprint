@@ -3,6 +3,7 @@ import os
 import json
 import sys
 from flask import Flask,request,jsonify
+from flask_cors import CORS
 from fingerprint import oneplace
 
 __author__  = "Juerg Binggeli <juerg.binggeli@gmail.com>"
@@ -12,6 +13,7 @@ __date__    = "04.03.2020"
 
 config = None
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
 def index():
@@ -21,11 +23,17 @@ def index():
 @app.route('/api/stamp', methods=['POST'])
 def worktime_stamp():
     # content = request.json
-    content = request.get_json()
-
-    oRc = oneplace.logStamp(1, content['type'])
+    print(request)
+    print(request.json)
+    print(request.data)
+    # content = request.get_json()
+    content=request.get_json(force=True)
+    print(content)
+    oRc = {'state': "error", 'message': "no valid data"}
+    if content is not None:
+        oRc = oneplace.logStamp(1, content['type'])
     # return content
-    return jsonify({'state': oRc})
+    return jsonify(oRc)
 
 
 
@@ -35,11 +43,11 @@ def start():
         with open("config.json") as json_data_file:
             config = json.load(json_data_file)
     except:
-        print("File not found")
+        print("Config.json not found")
         exit(0)
     oneplace.init(config)
     print("Start Worktime Stamp")
-    app.run(debug=True, host='0.0.0.0', port=config["api"]["server"]["port"])
+    app.run(debug=True, host='localhost', port=config["api"]["server"]["port"])
 
 
 # if __name__ == "__main__":

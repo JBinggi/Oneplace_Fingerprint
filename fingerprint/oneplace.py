@@ -1,6 +1,7 @@
 import os
-import json
 import requests
+import json
+
 config = None
 
 def init(configFile):
@@ -13,10 +14,15 @@ def send(url, data):
         "Content-Type": "application/x-www-form-urlencoded",
     }
     response = requests.post(url, headers=headers, data=data)
-    msg = json.loads(response.text)
-    if msg["state"] == "success":
-        return 1
-    return 0
+    if response == 200:
+        print(response)
+        if response.text:
+            msg = json.loads(response.text)
+            return msg
+        #     if msg["state"] == "success":
+        #         return 1
+        # return 0
+    return {'state': "error","message":"no response form Oneplace"}
 
 def logStamp(finger,type):
     # set data to send to OnePlace
@@ -36,7 +42,7 @@ def logStamp(finger,type):
     oData["authkey"] = config["api"]["key"]
     oData["authtoken"] = config["api"]["token"]
     oData["values"] = json.dumps(values)
-    send(config["api"]["stamp"]["url_add"], oData)
-
-    print(oData)
-    print("logged")
+    return send(config["api"]["stamp"]["url_add"], oData)
+    #
+    # print(oData)
+    # print("logged")
