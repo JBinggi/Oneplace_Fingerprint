@@ -1,0 +1,15 @@
+{
+  "api": {
+    "token": "E7ZH-2W1U-VJ7I-I6F2-78KE-M51K-Q48E-AE4F",
+    "key": "1234",
+    "server": {
+      "port": 5000
+    },
+    "stamp": {
+      "url_add": "http://digitagerp.intern/worktime/stamp/api/add"
+    },
+    "enroll": {
+      "url_add": "http://digitagerp.intern/user/finger/api/add"
+    }
+  }
+}

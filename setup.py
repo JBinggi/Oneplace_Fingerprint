@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fingerprint-oneplace-jbinggi",
-    version="0.0.2",
+    version="0.0.7",
     author="JBinggi",
     author_email="juerg.binggeli@gmail.com",
     description="Raspberry Pi Fingerprint Library to connect with Oneplace",
@@ -18,6 +18,6 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    scripts=['bin/oneplace-fingerprint.py'],
-    python_requires='>=3.6',
+    scripts=['bin/oneplace-fingerprint'],
+    python_requires='>=3.5',
 )

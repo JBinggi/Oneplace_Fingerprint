@@ -9,5 +9,8 @@ Requires [oneplace-core](https://github.com/OnePlc/PLC_X_Core), [oneplace-user-f
 
 The easiest way to install this plugin is by using composer
 ```bash
+python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps fingerprint-oneplace-jbinggi
+
+TODO:
 $ pip install fingerprint-oneplace-jbinggi
 ```
