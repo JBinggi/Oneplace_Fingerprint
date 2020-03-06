@@ -22,17 +22,19 @@ def index():
 
 @app.route('/api/stamp', methods=['POST'])
 def worktime_stamp():
-    # content = request.json
-    print(request)
-    print(request.json)
-    print(request.data)
-    # content = request.get_json()
-    content=request.get_json(force=True)
-    print(content)
+    form = request.form
     oRc = {'state': "error", 'message': "no valid data"}
-    if content is not None:
-        oRc = oneplace.logStamp(1, content['type'])
-    # return content
+    print(request)
+    if form is None:
+        form = request.param
+    if form is not None:
+        try:
+            print(form['data'])
+            oRc = oneplace.logStamp(1, form['data'])
+        except Exception as e:
+            print("exception occurred: " + str(e))
+            return jsonify(oRc)
+    print(oRc)
     return jsonify(oRc)
 
 
@@ -47,10 +49,8 @@ def start():
         exit(0)
     oneplace.init(config)
     print("Start Worktime Stamp")
-    app.run(debug=True, host='localhost', port=config["api"]["server"]["port"])
+    print(config["api"]["server"]["url"])
+    print(config["api"]["server"]["port"])
+    app.run(ssl_context=('fullchain1.pem', 'privkey1.pem'), debug=True, host=config["api"]["server"]["url"], port=config["api"]["server"]["port"])
 
-
-# if __name__ == "__main__":
-#     _startTime = time.time()
-#     config = json.load(open(os.path.dirname(__file__) + '/config.json'))
-#     print(sys.argv[1])
+ssl_context=()

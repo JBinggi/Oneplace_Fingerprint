@@ -13,15 +13,20 @@ def send(url, data):
         "Content-Type": "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
     }
-    response = requests.post(url, headers=headers, data=data)
-    if response == 200:
-        print(response)
-        if response.text:
-            msg = json.loads(response.text)
-            return msg
-        #     if msg["state"] == "success":
-        #         return 1
-        # return 0
+    try:
+        response = requests.post(url, headers=headers, data=data)
+        if response == 200:
+            print(response)
+            # if response.text:
+            #     msg = json.loads(response.text)
+            #     return msg
+            #     if msg["state"] == "success":
+            #         return 1
+            # return 0
+    except Exception as e:
+        print("exception occurred: " + str(e))
+        return {'state': "error", "message": str(e)}
+
     return {'state': "error","message":"no response form Oneplace"}
 
 def logStamp(finger,type):
